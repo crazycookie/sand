@@ -1,0 +1,26 @@
+<div class="container-fluid" style="margin-top: 10px;"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<div class="row-fluid">
+		<div class="span10 offset1" style="padding-top: 20px;">
+			<h:form>
+				<div class="navbar">
+					<div class="navbar-inner">
+						<h:outputLink class="brand" href="#">
+							<small><strong><h:outputText value="#{sysBundle['module.common.navigator']}" /></strong></small>
+						</h:outputLink>
+						<ul class="nav">
+							<li><h:commandLink action="HOME" value="#{sysBundle['module.common.home']}"
+									actionListener="#{settingConversationManager.endTotalConversation()}" /></li>
+							<li><h:commandLink action="#{settingAction.startConversation()}"
+									value="#{settingBundle['func3.name']}"
+									actionListener="#{settingConversationManager.endTotalConversation()}" /></li>
+							<li><h:commandLink
+									action="SETTING_HELP" value="#{sysBundle['func.help']}"
+									actionListener="#{settingConversationManager.endTotalConversation()}" /></li>
+						</ul>
+					</div>
+				</div>
+			</h:form>
+		</div>
+	</div>
+</div>

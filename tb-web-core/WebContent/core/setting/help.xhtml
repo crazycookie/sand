@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:body>
+
+	<ui:composition template="../template/template.xhtml">
+
+		<ui:define name="header">
+			<h:outputStylesheet library="css/#{view.locale}" name="/bootstrapSwitch.css" />
+		</ui:define>
+
+		<ui:define name="body">
+			<f:view>
+
+				<!-- NAVIGATOR -->
+
+				<ui:insert>
+					<ui:include src="./nav.xhtml"></ui:include>
+				</ui:insert>
+
+				<div class="container-fluid">
+
+					<!-- FORM TITLE -->
+
+					<div class="row-fluid">
+						<div class="span10 offset1">
+							<div class="page-header text-left">
+								<h2>
+									<h:outputText value="#{sysBundle['func.help.full']}" />
+									<small>&nbsp;<h:outputText
+											value="#{sysBundle['func.help.version']}" /></small>
+								</h2>
+							</div>
+						</div>
+					</div>
+
+					<div class="row-fluid">
+						<div class="span10 offset1">
+							<div class="accordion" id="accordion2">
+
+								<div class="accordion-group">
+									<div class="accordion-heading">
+										<a class="accordion-toggle" data-toggle="collapse"
+											data-parent="#accordion2" href="#collapseA">个人设置使用指南</a>
+									</div>
+									<div id="collapseA" class="accordion-body collapse">
+										<div class="accordion-inner">
+											<ol>
+												<li>点击个人设置模块图标，进入个人设置功能，目前开放了更改密码功能<br />
+													<h:graphicImage value="/resources/img/#{view.locale}/setting/s1.png" style="width: 251px" styleClass="img-rounded" />
+												</li>
+												<li>如果用户从淘宝网登陆进系统是不需要密码的</li>
+												<li>如果用户希望直接登陆我们的系统，可以在这里修改密码，为了安全，第一次密码修改必须从淘宝网登陆</li>
+											</ol>
+										</div>
+									</div>
+								</div>
+
+								<div class="accordion-group">
+									<div class="accordion-heading">
+										<a class="accordion-toggle" data-toggle="collapse"
+											data-parent="#accordion2" href="#collapseC"><h:outputText
+												value="#{sysBundle['func.group3.title']}" /></a>
+									</div>
+									<div id="collapseC" class="accordion-body collapse">
+										<div class="accordion-inner">请访问我们的主页，立即获取最新资讯
+											<a class="btn btn-primary" href="#{sysBundle['website.productListUrl']}" target="blank">立刻获取</a> 
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- ADDITIONAL JS IMPORT -->
+
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

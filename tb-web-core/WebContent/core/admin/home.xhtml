@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:body>
+
+	<ui:composition template="../template/template.xhtml">
+		<ui:define name="body">
+			<f:view>
+
+				<!-- Navigator -->
+
+				<ui:insert>
+					<ui:include src="./nav.xhtml"></ui:include>
+				</ui:insert>
+
+				<div class="container-fluid">
+
+					<!-- Form Title -->
+
+					<div class="row-fluid">
+						<div class="span10 offset1">
+							<div class="page-header text-left">
+								<h2>
+									<h:outputText value="#{settingBundle['func3.name']}" />
+									<small>&nbsp;<h:outputText
+											value="#{settingBundle['func3.version']}" /></small>
+								</h2>
+							</div>
+						</div>
+					</div>
+
+					<!-- Message Region -->
+
+					<ui:insert>
+						<ui:include src="../common/msg.xhtml"></ui:include>
+					</ui:insert>
+
+					<!-- Form -->
+
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="span10 offset1">
+							<div class="bs-docs-example">
+								<h3 class="text-success">主动推送功能测试-商品相关-获取哪些用户丢弃了消息-taobao.comet.discardinfo.get</h3>
+								<p class="text-success">
+									获取一个appkey的哪些用户丢失了消息 <span class="text-error">丢消息的用户最长只保存24小时,最长查询区间为1个小时</span>
+								</p>
+								<h:form class="form-inline">
+									<h:commandButton styleClass="btn btn-primary" value="获取哪些用户丢弃了消息"
+										action="#{adminAction.retrieveDiscardInfo()}" />
+								</h:form>
+							</div>	
+							</div>
+						</div>
+						<div class="row-fluid">
+							<div class="span10 offset1">
+							<div class="bs-docs-example">
+								<h3 class="text-success">主动推送功能测试-商品相关-更新商品ItemUpdate</h3>
+								<p class="text-success">
+									当通过商品更新api(taobao.item.update)更新商品时，会产生此消息。<br /> 当通过页面更新商品时，会产生此消息。
+								</p>
+								<h:form class="form-inline">
+									<label class="control-label" for="inputUserId">输入用户ID</label>
+									<h:inputText id="inputUserId" value="#{adminAction.selectedUserId}"
+										maxlength="20" required="true" />
+									<h:commandButton styleClass="btn btn-primary" value="更新一件商品的描述信息"
+										action="#{adminAction.updateFirstItemForSpecifiedUser()}" />
+								</h:form>
+							</div>	
+							</div>
+						</div>
+						<div class="row-fluid">
+							<div class="span10 offset1">
+							<div class="bs-docs-example">
+								<h3 class="text-success">主动推送功能测试-商品相关-获取商品变更通知信息-taobao.increment.items.get</h3>
+								<p class="text-success">
+									开通主动通知业务的APP可以通过该接口获取商品变更通知信息 最早可取6天内的数据, 但时间区间限定为1天<span
+										class="text-error">建议获取增量消息的时间间隔是：半个小时</span>
+								</p>
+								<h:form class="form-inline">
+									<label class="control-label" for="inputUserId">输入用户ID</label>
+									<h:inputText id="inputUserId" value="#{adminAction.selectedUserId}"
+										maxlength="20" required="true" />
+									<h:commandButton styleClass="btn btn-primary" value="获取商品变更通知信息"
+										action="#{adminAction.retrieveItemChangeNotificationMessage()}" />
+								</h:form>
+							</div>	
+							</div>
+						</div>
+						
+						<div class="row-fluid">
+							<div class="span10 offset1">
+							<div class="bs-docs-example">
+								<h3 class="text-success">主动推送功能测试-商品相关-异步获取增量消息数据-taobao.topats.increment.messages.get</h3>
+								<p class="text-success">
+									异步获取增量消息数据 
+								</p>
+								<h:form class="form-inline">
+									<label class="control-label" for="inputUserId">topics类型</label>
+									<h:inputText id="inputUserId" value="item,trade,refund" disabled="true"
+										maxlength="20" required="true" />
+									<h:commandButton styleClass="btn btn-primary" value="异步获取增量消息数据"
+										action="#{adminAction.asyncGetIncresementInfo()}" />
+								</h:form>
+							</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

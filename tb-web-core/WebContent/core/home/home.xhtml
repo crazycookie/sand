@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+<h:body>
+	<ui:composition template="../template/template.xhtml">
+		<ui:define name="body">
+			<div class="container" style="margin-top: 60px;">
+				<div class="row-fluid">
+					<div class="span12">
+						<blockquote class="pull-right text-warning">
+							<p>
+								<h:outputText value="#{sysBundle['website-name']}" escape="false" />
+								TB-CORE SYSTEM
+							</p>
+							<small>详细的使用指南请参看各模块内的帮助文档</small>
+						</blockquote>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<ul class="thumbnails">
+						
+						<!-- SETTING MODULE -->
+						<li class="span3">
+							<h:form id="profile_form">
+							<h:commandLink id="profile_change_link" action="SETTING_HOME" styleClass="thumbnail" actionListener="#{settingAction.startConversation()}">
+								<h:graphicImage value="/resources/img/#{view.locale}/setting.png" styleClass="img-rounded" />
+								<h3 align="center">#{sysBundle['module4.name']}</h3>
+								<p align="center">#{sysBundle['module4.desc']}</p>
+							</h:commandLink>
+							</h:form>
+						</li>
+						
+						<!-- ADMIN MODULE -->
+						<li class="span3">
+							<h:form id="admin_form">
+							<h:commandLink id="admin_home_link" action="ADMIN_HOME" styleClass="thumbnail" actionListener="#{adminAction.startConversation()}">
+								<h:graphicImage value="/resources/img/#{view.locale}/setting.png" styleClass="img-rounded" />
+								<h3 align="center">#{sysBundle['module5.name']}</h3>
+								<p align="center">#{sysBundle['module5.desc']}</p>
+							</h:commandLink>
+							</h:form>
+						</li>
+						
+					</ul>
+				</div>
+				
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

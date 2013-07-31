@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="../template/home_template.xhtml">
+		<ui:define name="body">
+
+			<div class="jumbotron masthead">
+				<div class="container">
+					<h1>
+						<h:outputText value="#{sysBundle['website-name']}" escape="false" />
+					</h1>
+					<p><h:outputText value="#{sysBundle['website-desc']}" /> </p>
+					<p>
+						<a class="btn btn-primary btn-large" href="#{sysBundle['website.productListUrl']}" target="blank"><h:outputText value="#{sysBundle['website.order']}" /></a>
+					</p>
+					<ul class="masthead-links" style="margin-top: 40px;margin-bottom: -40px;">
+						<li><a href="#"><h:outputText value="#{sysBundle['website-desc2']}" /></a></li>
+						<li id="version"><h:outputText value="#{sysBundle['website.version']}" /></li>
+					</ul>
+				</div>
+			</div>
+			
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="tb-web-core">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/tb-common-core-src"/>
+        <property name="java-output-path" value="/tb-web-core/build/classes"/>
+        <property name="context-root" value="tb-web-core"/>
+    </wb-module>
+</project-modules>

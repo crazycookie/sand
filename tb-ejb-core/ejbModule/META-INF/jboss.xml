@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<jboss>
+	<security-domain>tbcore-domain</security-domain>
+</jboss>

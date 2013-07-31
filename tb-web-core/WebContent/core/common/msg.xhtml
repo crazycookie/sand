@@ -1,0 +1,29 @@
+<h:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	rendered="#{fn:length(facesContext.messageList) ne 0}">
+	<div class="row-fluid">
+		<div class="span10 offset1 text-left">
+			<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
+				<h:messages style="display: none;"/>
+				<c:forEach items="#{facesContext.messageList}" var="msg">
+					<c:if test="#{msg.severity.ordinal ne 0}">
+						<div class="alert alert-error">
+							<button class="close" data-dismiss="alert" type="button">×</button>
+							<span class="label label-important"><h:outputText
+									value="#{sysBundle['sys.error']}" /></span> <strong><h:outputText
+									value="#{msg.summary}" /></strong>
+						</div>
+					</c:if>
+					<c:if test="#{msg.severity.ordinal eq 0}">
+						<div class="alert alert-success">
+							<button class="close" data-dismiss="alert" type="button">×</button>
+							<span class="label label-success"><h:outputText
+									value="#{sysBundle['sys.success']}" /></span> <strong><h:outputText
+									value="#{msg.summary}" /></strong>
+						</div>
+					</c:if>
+				</c:forEach>
+			</h:panelGroup>
+		</div>
+	</div>
+</h:panelGroup>

@@ -1,0 +1,24 @@
+<project name="SourceMatrix" default="dist" basedir=".">
+	<description>
+		compile ejb interfaces files to web-project's library.
+		Written by William.
+	</description>
+		<!-- set global properties for this build -->
+
+	<property name="input" location="../tb-ejb-core/build/classes" />
+	<property name="output" location="WebContent/WEB-INF/lib" />
+
+	<target name="dist">
+		<available file="${input}" property="isInputExist"></available>
+		<fail message="can't find folder: ${input}" unless="${isInputExist}"></fail>
+		<available file="${output}" property="isOutputExist"></available>
+		<fail message="can't find folder: ${output}" unless="${isOutputExist}"></fail>
+		
+		<delete file="${output}/tbcore-ejb-interfaces.jar" quiet="true"/>
+		<jar destfile="${output}/tbcore-ejb-interfaces.jar">
+			<fileset dir="${input}" casesensitive="yes">
+				<include name="com/crazycookie/tbcore/interfaces/**/*" />
+			</fileset>
+		</jar>
+	</target>
+</project>
