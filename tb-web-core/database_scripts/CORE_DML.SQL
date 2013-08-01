@@ -1,5 +1,4 @@
-INSERT INTO `users` (`id`,`userName`,`pwd`,`nickName`,`tbUserId`,`accessToken`,`refreshToken`,`entryUpdate`) VALUES (-1,'inner','l0m1DauymIBQdG85QIZMgw','全部',NULL,NULL,NULL,NULL);
-INSERT INTO `users` (`id`,`userName`,`pwd`,`nickName`,`tbUserId`,`accessToken`,`refreshToken`,`entryUpdate`) VALUES (1,'admin','WmkNhCk1xR8m9HPgJcG5eg==','admin','377254484','6201e12f5a929f3e4658ZZd8ef781ef8d51b67b22e662b2377254484','6200d121835761af1937ZZ52bbf49796b788aeae1c44830377254484','2013-05-24 23:27:46');
+INSERT INTO `users` (`id`,`tbUserNick`,`pwd`,`tbUserId`,`accessToken`,`refreshToken`,`entryUpdate`) VALUES (1,'admin','WmkNhCk1xR8m9HPgJcG5eg==','377254484','6201e12f5a929f3e4658ZZd8ef781ef8d51b67b22e662b2377254484','6200d121835761af1937ZZ52bbf49796b788aeae1c44830377254484','2013-05-24 23:27:46');
 
 INSERT INTO `userRoleRef` (`id`,`userId`,`roleId`) VALUES (1,1,1);
 INSERT INTO `userRoleRef` (`id`,`userId`,`roleId`) VALUES (2,1,2);

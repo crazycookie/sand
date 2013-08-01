@@ -36,9 +36,8 @@ delimiter $$
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userName` varchar(40) NOT NULL,
+  `tbUserNick` varchar(40) NOT NULL,
   `pwd` varchar(24) NOT NULL,
-  `nickName` varchar(40) NOT NULL,
   `tbUserId` varchar(45) DEFAULT NULL,
   `accessToken` varchar(80) DEFAULT NULL,
   `refreshToken` varchar(80) DEFAULT NULL,

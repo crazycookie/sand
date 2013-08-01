@@ -13,8 +13,8 @@ public class UserInfo implements Serializable, Cloneable{
 	private static final long serialVersionUID = -140357036673267L;
 	
 	private int userId; // id
-	private String tbUserId; // taobao_user_id
 	private String tbUserNick; // taobao_user_nick
+	private String tbUserId; // taobao_user_id
 	private String password;
 	private String passwordRetry;
 	private String accessToken;
@@ -29,13 +29,29 @@ public class UserInfo implements Serializable, Cloneable{
 		}
 		return ui;	
 	}
-	
+
 	public int getUserId() {
 		return userId;
 	}
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	public String getTbUserNick() {
+		return tbUserNick;
+	}
+
+	public void setTbUserNick(String tbUserNick) {
+		this.tbUserNick = tbUserNick;
+	}
+
+	public String getTbUserId() {
+		return tbUserId;
+	}
+
+	public void setTbUserId(String tbUserId) {
+		this.tbUserId = tbUserId;
 	}
 
 	public String getPassword() {
@@ -68,22 +84,6 @@ public class UserInfo implements Serializable, Cloneable{
 
 	public void setRefreshToken(String refreshToken) {
 		this.refreshToken = refreshToken;
-	}
-
-	public String getTbUserId() {
-		return tbUserId;
-	}
-
-	public void setTbUserId(String tbUserId) {
-		this.tbUserId = tbUserId;
-	}
-
-	public String getTbUserNick() {
-		return tbUserNick;
-	}
-
-	public void setTbUserNick(String tbUserNick) {
-		this.tbUserNick = tbUserNick;
 	}
 
 }

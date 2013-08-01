@@ -15,9 +15,9 @@ public class UserInfoProducer {
 	@Inject java.security.Principal principal;
 
 	private static final String USER_QUERY_SQL = 
-		   "select users.userName, users.tbUserId, users.id, users.accessToken, users.refreshToken "
+		   "select users.id, users.tbUserNick, users.tbUserId, users.accessToken, users.refreshToken "
 		+ " from users"
-		+ " where users.userName = ?";
+		+ " where users.tbUserNick = ?";
 	
 	@Produces
 	@UserInfoQualifier
@@ -34,9 +34,9 @@ public class UserInfoProducer {
 		List<Object[]> list = dbHelper.doQuery(USER_QUERY_SQL, new Object[]{userName});
 		if (list != null && list.size() != 0){
 			Object[] data = list.get(0);
-			userInfo.setTbUserNick((String)data[0]);
-			userInfo.setTbUserId((String)data[1]);
-			userInfo.setUserId((Integer)data[2]);
+			userInfo.setUserId((Integer)data[0]);
+			userInfo.setTbUserNick((String)data[1]);
+			userInfo.setTbUserId((String)data[2]);
 			userInfo.setAccessToken((String)data[3]);
 			userInfo.setRefreshToken((String)data[4]);
 		}

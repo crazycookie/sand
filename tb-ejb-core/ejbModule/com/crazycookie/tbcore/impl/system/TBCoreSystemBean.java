@@ -20,9 +20,9 @@ public class TBCoreSystemBean implements ITBCoreSystem {
 	public static final int ADMIN = 1;
 	public static final int MEMBER_ROLE = ADMIN + 1;
 	
-	private static final String INSERT_USER_SQL = "insert into users(userName, pwd, nickName, tbUserId, accessToken, refreshToken, entryUpdate) values(?, ?, ?, ?, ?, ?, now())";
+	private static final String INSERT_USER_SQL = "insert into users(tbUserNick, pwd, tbUserId, accessToken, refreshToken, entryUpdate) values(?, ?, ?, ?, ?, now())";
 	private static final String INSERT_USER_ROLE_REF_SQL = "insert into userRoleRef(userId, roleId) values(?, ?)";
-	private static final String QUERY_USER_BY_NICKNAME_SQL = "select id, pwd from users where userName = ?";
+	private static final String QUERY_USER_BY_NICKNAME_SQL = "select id, pwd from users where tbUserNick = ?";
 	private static final String UPDATE_USER_SQL = "update users set accessToken = ?, refreshToken = ?, entryUpdate = now() where id = ?";
 	
 	@Override
@@ -30,7 +30,6 @@ public class TBCoreSystemBean implements ITBCoreSystem {
 		Object[] params = new Object[]{
 				userInfo.getTbUserNick(), 
 				userInfo.getPassword(), 
-				userInfo.getTbUserNick(),
 				userInfo.getTbUserId(), 
 				userInfo.getAccessToken(), 
 				userInfo.getRefreshToken()};
