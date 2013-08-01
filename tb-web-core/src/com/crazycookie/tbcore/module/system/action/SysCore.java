@@ -107,8 +107,7 @@ public class SysCore {
 			userInfo.setRefreshToken((String)map.get("refresh_token"));
 			userInfo.setTbUserId((String)map.get("taobao_user_id"));
 			try {
-				userInfo.setTbUserNick(URLDecoder.decode(
-						(String) map.get("taobao_user_nick"), "utf-8"));
+				userInfo.setTbUserNick(URLDecoder.decode((String) map.get("taobao_user_nick"), "utf-8"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

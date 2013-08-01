@@ -64,7 +64,7 @@ public class JSecurityCheckHelper {
 			HttpState initialState = new HttpState();
 			initialState.addCookie(genRequestCookie(jSessionId, jSecCheckFullURL));
 			httpClient.setState(initialState);
-			postMethod = new PostMethod(jSecCheckFullURL);
+			postMethod = new UTF8PostMethod(jSecCheckFullURL);
 			NameValuePair[] postData = new NameValuePair[2];
 			postData[0] = new NameValuePair("j_username", userName);
 			postData[1] = new NameValuePair("j_password", password);
@@ -210,6 +210,19 @@ public class JSecurityCheckHelper {
 		} catch (Exception x) {
 			x.printStackTrace();
 		}
+	}
+	
+	static class UTF8PostMethod extends PostMethod{
+		
+		public UTF8PostMethod(String url){
+            super(url);
+        }
+		
+        @Override
+        public String getRequestCharSet() {
+            //return super.getRequestCharSet();
+            return "UTF-8";
+        }
 	}
 
 }
