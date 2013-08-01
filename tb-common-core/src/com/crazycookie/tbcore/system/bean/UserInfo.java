@@ -19,6 +19,7 @@ public class UserInfo implements Serializable, Cloneable{
 	private String passwordRetry;
 	private String accessToken;
 	private String refreshToken;
+	private String role;
 	
 	public UserInfo clone(){
 		UserInfo ui = null;
@@ -28,6 +29,10 @@ public class UserInfo implements Serializable, Cloneable{
 			e.printStackTrace();
 		}
 		return ui;	
+	}
+	
+	public boolean hasRole(String roleName){
+		return role.contains(roleName);
 	}
 
 	public int getUserId() {
@@ -84,6 +89,14 @@ public class UserInfo implements Serializable, Cloneable{
 
 	public void setRefreshToken(String refreshToken) {
 		this.refreshToken = refreshToken;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

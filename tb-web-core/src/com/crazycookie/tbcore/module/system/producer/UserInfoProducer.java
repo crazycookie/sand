@@ -15,9 +15,21 @@ public class UserInfoProducer {
 	@Inject java.security.Principal principal;
 
 	private static final String USER_QUERY_SQL = 
-		   "select users.id, users.tbUserNick, users.tbUserId, users.accessToken, users.refreshToken "
-		+ " from users"
-		+ " where users.tbUserNick = ?";
+			 "select  "
+					 +"    users.id, "
+					 +"    users.tbUserNick, "
+					 +"    users.tbUserId, "
+					 +"    users.accessToken, "
+					 +"    users.refreshToken, "
+					 +"    roles.roleName "
+					 +"from "
+					 +"    users, "
+					 +"    roles, "
+					 +"    userRoleRef "
+					 +"where "
+					 +"    users.tbUserNick = ? "
+					 +"        and users.id = userRoleRef.userId "
+					 +"        and userRoleRef.roleId = roles.id ";
 	
 	@Produces
 	@UserInfoQualifier
@@ -39,6 +51,15 @@ public class UserInfoProducer {
 			userInfo.setTbUserId((String)data[2]);
 			userInfo.setAccessToken((String)data[3]);
 			userInfo.setRefreshToken((String)data[4]);
+			
+			String role = "";
+			for (Object[] object: list){
+				role += ("," + object[5]);
+			}
+			if (role.length() != 0) {
+				role = role.substring(1);
+			}
+			userInfo.setRole(role);
 		}
 		return userInfo;
 	}
