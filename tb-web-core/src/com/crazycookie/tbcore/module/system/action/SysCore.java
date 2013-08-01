@@ -1,5 +1,6 @@
 package com.crazycookie.tbcore.module.system.action;
 
+import java.net.URLDecoder;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import org.jboss.logging.Logger;
 
 import com.crazycookie.tbcore.api.CrazyCookieOauthApi;
+import com.crazycookie.tbcore.interfaces.system.ITBCoreSystem;
+import com.crazycookie.tbcore.interfaces.system.ITBCoreSystemSingleton;
 import com.crazycookie.tbcore.module.system.nav.SystemNav;
 import com.crazycookie.tbcore.module.system.qualifier.TBCoreSystemRemoteBean;
 import com.crazycookie.tbcore.module.system.qualifier.TBCoreSystemSingleRemoteBean;
@@ -24,8 +27,6 @@ import com.crazycookie.tbcore.system.qualifier.TBCoreLogged;
 import com.crazycookie.tbcore.system.qualifier.TBCoreTrace;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.crazycookie.tbcore.interfaces.system.ITBCoreSystem;
-import com.crazycookie.tbcore.interfaces.system.ITBCoreSystemSingleton;
 
 @Model
 public class SysCore {
@@ -105,8 +106,13 @@ public class SysCore {
 			userInfo.setAccessToken((String)map.get("access_token"));
 			userInfo.setRefreshToken((String)map.get("refresh_token"));
 			userInfo.setTbUserId((String)map.get("taobao_user_id"));
-			userInfo.setTbUserNick((String)map.get("taobao_user_nick"));
-			userInfo.setPassword(PasswordGenerator.encryptPassword(PasswordGenerator.DEFAULT_PWD));
+			try {
+				userInfo.setTbUserNick(URLDecoder.decode(
+						(String) map.get("taobao_user_nick"), "utf-8"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			userInfo.setPassword(PasswordGenerator.generateRandomPassword());
 			
 			UserInfo backInfo = systemRemoteBean.createOrUpdateUser(userInfo.clone());
 			

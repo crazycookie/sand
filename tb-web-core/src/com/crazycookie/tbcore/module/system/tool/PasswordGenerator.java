@@ -11,8 +11,13 @@ public class PasswordGenerator {
 		return Util.createPasswordHash("MD5", Util.BASE64_ENCODING, null, null, password);
 	}
 	
+	public static String generateRandomPassword(){
+		return encryptPassword(System.currentTimeMillis() + "");
+	}
+	
 	public static void main(String args[]){
 		System.out.println(PasswordGenerator.encryptPassword(DEFAULT_PWD));
+		System.out.println(PasswordGenerator.generateRandomPassword());
 	}
 
 }
