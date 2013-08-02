@@ -9,8 +9,8 @@ import javax.inject.Named;
 @SessionScoped
 @Named
 public class UserInfo implements Serializable, Cloneable{
-	
-	private static final long serialVersionUID = -140357036673267L;
+
+	private static final long serialVersionUID = 4891935940138956594L;
 	
 	private int userId; // id
 	private String tbUserNick; // taobao_user_nick
