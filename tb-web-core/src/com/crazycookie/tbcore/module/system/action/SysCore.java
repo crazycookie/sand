@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.enterprise.inject.Model;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
@@ -40,18 +39,6 @@ public class SysCore {
 	public Object logout(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return SystemNav.HOME;
-	}
-	
-	public void register(){
-		if (!userInfo.getPassword().equals(userInfo.getPasswordRetry())){
-			FacesContext context = FacesContext.getCurrentInstance();
-			ResourceBundle bundle = ResourceBundle.getBundle("messages.interest.Message", context.getViewRoot().getLocale());
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, bundle.getString("interest.validator.passwordnotsame"), ""));
-			return;
-		}
-		UserInfo user = userInfo.clone();
-		user.setPassword(PasswordGenerator.encryptPassword(user.getPassword()));
-		systemRemoteBean.createUser(user);
 	}
 	
 	/**

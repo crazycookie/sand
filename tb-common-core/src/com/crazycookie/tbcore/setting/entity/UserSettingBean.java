@@ -16,18 +16,15 @@ public class UserSettingBean implements Cloneable, Serializable{
 	
 	private int id;
 	private String password;
-	private String rePassword;
 	
 	public void clear(){
 		id = 0;
 		password = null;
-		rePassword = null;
 	}
 	
 	public void setUserSettingBean(UserSettingBean userSettingBean){
 		id = userSettingBean.id;
 		password = userSettingBean.password;
-		rePassword = userSettingBean.rePassword;
 	}
 	
 	public UserSettingBean clone(){
@@ -56,11 +53,4 @@ public class UserSettingBean implements Cloneable, Serializable{
 		this.password = password;
 	}
 
-	public String getRePassword() {
-		return rePassword;
-	}
-
-	public void setRePassword(String rePassword) {
-		this.rePassword = rePassword;
-	}
 }

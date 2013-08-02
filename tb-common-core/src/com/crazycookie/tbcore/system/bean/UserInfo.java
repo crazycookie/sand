@@ -16,7 +16,6 @@ public class UserInfo implements Serializable, Cloneable{
 	private String tbUserNick; // taobao_user_nick
 	private String tbUserId; // taobao_user_id
 	private String password;
-	private String passwordRetry;
 	private String accessToken;
 	private String refreshToken;
 	private String role;
@@ -65,14 +64,6 @@ public class UserInfo implements Serializable, Cloneable{
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getPasswordRetry() {
-		return passwordRetry;
-	}
-
-	public void setPasswordRetry(String passwordRetry) {
-		this.passwordRetry = passwordRetry;
 	}
 
 	public String getAccessToken() {

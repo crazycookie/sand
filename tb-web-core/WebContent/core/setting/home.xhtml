@@ -44,13 +44,17 @@
 								<div class="control-group">
 									<label class="control-label" for="inputPassword"><h:outputText value="#{settingBundle['func3.form.password']}" /></label>
 									<div class="controls">
-										<h:inputSecret id="inputPassword" value="#{userSettingBean.password}" label="#{settingBundle['func3.form.password']}" maxlength="8" required="true" />
+										<h:inputSecret id="inputPassword" value="#{settingFormBean.pwd}" label="#{settingBundle['func3.form.password']}" maxlength="8" required="true">
+											<f:validateLength minimum="6" maximum="8"></f:validateLength>
+										</h:inputSecret>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="inputRetryPassword"><h:outputText value="#{settingBundle['func3.form.retryPassword']}" /></label>
 									<div class="controls">
-										<h:inputSecret id="inputRetryPassword" value="#{userSettingBean.rePassword}" label="#{settingBundle['func3.form.retryPassword']}" maxlength="8" required="true" />
+										<h:inputSecret id="inputRetryPassword" value="#{settingFormBean.retryPwd}" label="#{settingBundle['func3.form.retryPassword']}" maxlength="8" required="true">
+											<f:validateLength minimum="6" maximum="8"></f:validateLength>
+										</h:inputSecret>
 									</div>
 								</div>
 								<div class="form-actions">
