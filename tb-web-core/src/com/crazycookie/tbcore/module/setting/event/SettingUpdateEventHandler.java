@@ -34,7 +34,7 @@ public class SettingUpdateEventHandler implements Serializable {
 		if (form.getPwd().equals(form.getRetryPwd())){
 			UserSettingBean bean = userSettingBean.clone();
 			bean.setId(userInfo.getUserId());
-			bean.setPassword(PasswordGenerator.encryptPassword(userSettingBean.getPassword()));
+			bean.setPassword(PasswordGenerator.encryptPassword(form.getPwd()));
 			int result = settingRemoteBean.updateUserSettingBean(bean);
 			
 			switch (result) {

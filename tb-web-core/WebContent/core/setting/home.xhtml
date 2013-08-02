@@ -40,9 +40,9 @@
 
 					<div class="row-fluid">
 						<div class="span10 offset1 text-left bs-docs-example">
-							<h:form class="form-horizontal">
+							<h:form id="form" class="form-horizontal">
 								<div class="control-group">
-									<label class="control-label" for="inputPassword"><h:outputText value="#{settingBundle['func3.form.password']}" /></label>
+									<label class="control-label" for="form:inputPassword"><h:outputText value="#{settingBundle['func3.form.password']}" /></label>
 									<div class="controls">
 										<h:inputSecret id="inputPassword" value="#{settingFormBean.pwd}" label="#{settingBundle['func3.form.password']}" maxlength="8" required="true">
 											<f:validateLength minimum="6" maximum="8"></f:validateLength>
@@ -50,11 +50,17 @@
 									</div>
 								</div>
 								<div class="control-group">
-									<label class="control-label" for="inputRetryPassword"><h:outputText value="#{settingBundle['func3.form.retryPassword']}" /></label>
+									<label class="control-label" for="form:inputRetryPassword"><h:outputText value="#{settingBundle['func3.form.retryPassword']}" /></label>
 									<div class="controls">
 										<h:inputSecret id="inputRetryPassword" value="#{settingFormBean.retryPwd}" label="#{settingBundle['func3.form.retryPassword']}" maxlength="8" required="true">
 											<f:validateLength minimum="6" maximum="8"></f:validateLength>
 										</h:inputSecret>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputRetryPassword"></label>
+									<div class="controls">
+										<small class="text-info">密码长度介于6-8位之间</small>
 									</div>
 								</div>
 								<div class="form-actions">

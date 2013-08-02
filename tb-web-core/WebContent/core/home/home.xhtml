@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:body>
 	<ui:composition template="../template/template.xhtml">
 		<ui:define name="header">
@@ -36,6 +36,8 @@
 						</li>
 						
 						<!-- ADMIN MODULE -->
+						
+						<c:if test="#{userInfo.hasRole('Admin')}">
 						<li class="span3">
 							<h:form id="admin_form">
 							<h:commandLink id="admin_home_link" action="ADMIN_HOME" styleClass="thumbnail" actionListener="#{adminAction.startConversation()}">
@@ -45,6 +47,7 @@
 							</h:commandLink>
 							</h:form>
 						</li>
+						</c:if>
 						
 					</ul>
 				</div>
