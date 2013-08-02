@@ -8,11 +8,13 @@ import javax.inject.Inject;
 import com.crazycookie.tbcore.module.system.qualifier.UserInfoQualifier;
 import com.crazycookie.tbcore.system.bean.UserInfo;
 import com.crazycookie.tbcore.system.helper.DatabaseHelper;
+import com.crazycookie.tbcore.system.qualifier.TBCoreTrace;
 
 public class UserInfoProducer {
 	
 	@Inject DatabaseHelper dbHelper;
 	@Inject java.security.Principal principal;
+	@Inject UserInfo userInfoSession;
 
 	private static final String USER_QUERY_SQL = 
 			 "select  "
@@ -33,24 +35,28 @@ public class UserInfoProducer {
 	
 	@Produces
 	@UserInfoQualifier
-	UserInfo produceUserInfo(){
+	@TBCoreTrace
+	public UserInfo produceUserInfo(){
 		
-		UserInfo userInfo = new UserInfo();
-		String userName = "";
+		if (userInfoSession.getUserId() != 0){
+			return userInfoSession;
+		}
+
+		String userName = null;
 		try{
 			userName = principal.getName();
 		}catch(Exception e){
-			return userInfo;
+			return userInfoSession;
 		}
 		
 		List<Object[]> list = dbHelper.doQuery(USER_QUERY_SQL, new Object[]{userName});
 		if (list != null && list.size() != 0){
 			Object[] data = list.get(0);
-			userInfo.setUserId((Integer)data[0]);
-			userInfo.setTbUserNick((String)data[1]);
-			userInfo.setTbUserId((String)data[2]);
-			userInfo.setAccessToken((String)data[3]);
-			userInfo.setRefreshToken((String)data[4]);
+			userInfoSession.setUserId((Integer)data[0]);
+			userInfoSession.setTbUserNick((String)data[1]);
+			userInfoSession.setTbUserId((String)data[2]);
+			userInfoSession.setAccessToken((String)data[3]);
+			userInfoSession.setRefreshToken((String)data[4]);
 			
 			String role = "";
 			for (Object[] object: list){
@@ -59,8 +65,8 @@ public class UserInfoProducer {
 			if (role.length() != 0) {
 				role = role.substring(1);
 			}
-			userInfo.setRole(role);
+			userInfoSession.setRole(role);
 		}
-		return userInfo;
+		return userInfoSession;
 	}
 }

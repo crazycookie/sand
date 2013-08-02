@@ -11,8 +11,6 @@ import com.crazycookie.tbcore.interfaces.system.ITBCoreSystemSingleton;
 import com.crazycookie.tbcore.module.system.listener.pushhelper.MessageDecode;
 import com.crazycookie.tbcore.module.system.listener.pushhelper.NotifyTopats;
 import com.crazycookie.tbcore.module.system.qualifier.TBCoreSystemSingleRemoteBean;
-import com.crazycookie.tbcore.module.system.qualifier.UserInfoQualifier;
-import com.crazycookie.tbcore.system.bean.UserInfo;
 import com.crazycookie.tbcore.system.qualifier.TBCoreLogged;
 import com.taobao.api.TaobaoRequest;
 import com.taobao.api.TaobaoResponse;
@@ -24,17 +22,9 @@ import com.taobao.api.response.TopatsResultGetResponse;
 @RequestScoped
 public class TBCoreTopCometMessageListener implements TopCometMessageListener {
 
-	@Inject
-	@TBCoreLogged
-	Logger log;
-	@Inject
-	@TBCoreSystemSingleRemoteBean
-	ITBCoreSystemSingleton systemSingleton;
-	@Inject
-	@UserInfoQualifier
-	UserInfo userInfo;
-	@Inject
-	CrazyCookieTbApi api;
+	@Inject @TBCoreLogged Logger log;
+	@Inject @TBCoreSystemSingleRemoteBean ITBCoreSystemSingleton systemSingleton;
+	@Inject CrazyCookieTbApi api;
 
 	@Override
 	public void onClientKickOff() {

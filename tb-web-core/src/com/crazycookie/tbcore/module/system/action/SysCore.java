@@ -36,6 +36,7 @@ public class SysCore {
 	@Inject @UserInfoQualifier UserInfo userInfo;
 	@Inject @TBCoreLogged Logger log;
 	
+	@TBCoreTrace
 	public Object logout(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return SystemNav.HOME;
@@ -159,7 +160,13 @@ public class SysCore {
 			}
 			context.responseComplete();
 		}
-		
+	}
+	
+	@TBCoreTrace
+	public void initSession(){
+		/*
+		 * when normal login, this method will be invoked, and system will inject 'UserInfo' object.
+		 */
 	}
 	
 }

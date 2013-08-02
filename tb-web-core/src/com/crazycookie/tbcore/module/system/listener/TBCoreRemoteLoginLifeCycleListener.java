@@ -47,7 +47,7 @@ public class TBCoreRemoteLoginLifeCycleListener implements javax.faces.event.Pha
 	
 	@Override
 	public PhaseId getPhaseId() {
-		return PhaseId.ANY_PHASE;
+		return PhaseId.RENDER_RESPONSE;
 	}
 
 }

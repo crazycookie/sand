@@ -3,9 +3,11 @@
       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
-
 <h:body>
 	<ui:composition template="../template/template.xhtml">
+		<ui:define name="header">
+			<f:phaseListener type="com.crazycookie.tbcore.module.system.listener.TBCoreInitialSessionListener" />
+		</ui:define>
 		<ui:define name="body">
 			<div class="container" style="margin-top: 60px;">
 				<div class="row-fluid">

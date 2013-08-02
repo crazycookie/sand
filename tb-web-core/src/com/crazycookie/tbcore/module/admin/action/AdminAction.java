@@ -15,7 +15,10 @@ import com.crazycookie.tbcore.api.CrazyCookieTbApi;
 import com.crazycookie.tbcore.api.CrazyCookieTbApi.IRequestMaker;
 import com.crazycookie.tbcore.module.admin.nav.AdminNav;
 import com.crazycookie.tbcore.module.system.action.TBCoreNotificationDaemon;
+import com.crazycookie.tbcore.module.system.qualifier.UserInfoQualifier;
+import com.crazycookie.tbcore.system.bean.UserInfo;
 import com.crazycookie.tbcore.system.qualifier.TBCoreLogged;
+import com.crazycookie.tbcore.system.qualifier.TBCoreTrace;
 import com.taobao.api.TaobaoRequest;
 import com.taobao.api.TaobaoResponse;
 import com.taobao.api.domain.Item;
@@ -45,15 +48,19 @@ public class AdminAction implements Serializable {
 	@Inject CrazyCookieTbApi api;
 	@Inject @TBCoreLogged Logger log;
 	@Inject TBCoreNotificationDaemon daemon;
+	@Inject @UserInfoQualifier UserInfo userInfo;
+	
 	private String selectedUserId;
 
+	@TBCoreTrace
 	public Object startConversation() {
 		if (conversation.isTransient()) {
 			conversation.begin();
 		}
 		return AdminNav.ADMIN_HOME;
 	}
-
+	
+	@TBCoreTrace
 	public void endConversation() {
 		if (!(conversation.isTransient())) {
 			conversation.end();

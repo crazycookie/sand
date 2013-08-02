@@ -40,7 +40,7 @@
 	
 	<context-param>
       <param-name>org.jboss.jbossfaces.JSF_CONFIG_NAME</param-name>
-      <param-value>Mojarra-2.1.22</param-value>
+      <param-value>Mojarra-2.0.11</param-value>
 	</context-param>
 	<context-param>
 	    <param-name>org.jboss.jbossfaces.WAR_BUNDLES_JSF_IMPL</param-name>
